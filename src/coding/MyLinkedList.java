@@ -1,7 +1,5 @@
 package coding;
 
-import java.util.ArrayList;
-
 /**
  * @author dingweiqiang
  * @description 707. 设计链表
@@ -17,49 +15,49 @@ public class MyLinkedList {
      * obj.addAtIndex(index,val);
      * obj.deleteAtIndex(index);
      */
-    class node{
+    class Node{
         int val;
-        node next;
-        node(int val){this.val = val;}
+        Node next;
+        Node(int val){this.val = val;}
     }
 
     /** Initialize your data structure here. */
     public MyLinkedList() {
-        head = new node(0);
+        head = new Node(0);
         size = 0;
     }
 
-    /** Get the value of the index-th node in the linked list. If the index is invalid, return -1. */
+    /** Get the value of the index-th Node in the linked list. If the index is invalid, return -1. */
     public int get(int index) {
         if (index < 0 || index >=size){
             return -1;
         }
-        node pre = head;
+        Node pre = head;
         for (int i = 0;i < index ;i++){
             pre = pre.next;
         }
         return pre.next.val;
     }
 
-    /** Add a node of value val before the first element of the linked list. After the insertion, the new node will be the first node of the linked list. */
+    /** Add a Node of value val before the first element of the linked list. After the insertion, the new Node will be the first Node of the linked list. */
     public void addAtHead(int val) {
-        node newNode = new node(val);
+        Node newNode = new Node(val);
         newNode.next = head.next;
         head.next = newNode;
         size++;
     }
 
-    /** Append a node of value val to the last element of the linked list. */
+    /** Append a Node of value val to the last element of the linked list. */
     public void addAtTail(int val) {
-        node pre = head;
+        Node pre = head;
         while (pre.next !=null ){
             pre = pre.next;
         }
-        pre.next = new node(val);
+        pre.next = new Node(val);
         size++;
     }
 
-    /** Add a node of value val before the index-th node in the linked list. If index equals to the length of linked list, the node will be appended to the end of linked list. If index is greater than the length, the node will not be inserted. */
+    /** Add a Node of value val before the index-th Node in the linked list. If index equals to the length of linked list, the Node will be appended to the end of linked list. If index is greater than the length, the Node will not be inserted. */
     public void addAtIndex(int index, int val) {
         if (index == size){
             addAtTail(val);
@@ -68,21 +66,21 @@ public class MyLinkedList {
             addAtHead(val);
         }
         if (index>=0 && index<size){
-            node pre = head;
+            Node pre = head;
             for (int i = 0;i<index;i++){
                 pre = pre.next;
             }
-            node newNode = new node(val);
+            Node newNode = new Node(val);
             newNode.next = pre.next;
             pre.next = newNode;
             size++;
         }
     }
 
-    /** Delete the index-th node in the linked list, if the index is valid. */
+    /** Delete the index-th Node in the linked list, if the index is valid. */
     public void deleteAtIndex(int index) {
         if (index>=0&&index<size){
-            node pre = head;
+            Node pre = head;
             for (int i = 0;i<index;i++){
                 pre = pre.next;
             }
@@ -92,5 +90,5 @@ public class MyLinkedList {
     }
 
     private int size;
-    private node head;
+    private Node head;
 }
